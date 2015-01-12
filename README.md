@@ -6,3 +6,13 @@ Authorization by Standalone (Or other) access token.
 Веб приложение ВКонтакте основанное на VK API
 
 Авторизация с помощью access token
+
+by Pavo Philip!
+
+
+
+
+
+
+
+Good Boy...
