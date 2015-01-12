@@ -8,7 +8,7 @@ Authorization by Standalone (Or other) access token.
 Авторизация с помощью access token
 
 by Pavo Philip!
-
+Yep!
 
 
 
