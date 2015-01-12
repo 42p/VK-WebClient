@@ -1,0 +1,29 @@
+<div class="panel panel-muted wall">
+	<div class="panel-heading">
+		{{data.count}} posts
+	</div>
+	<div class="panel-body">
+		<div class="media wall-item" ng-init="author = post.author" ng-repeat="post in data.items">
+			<a class="media-left pull-left" ng-href="#/{{author.name ? 'group' : 'profile'}}/{{author.id}}">
+			    <img ng-src="{{author.photo_50}}" alt="..." />
+			  </a>
+			<div class="media-body">
+				<h6 class="media-heading">
+					<a ng-href="#/{{author.name ? 'group' : 'profile'}}/{{author.id}}">{{author.name ? author.name : (author.first_name +' ' + author.last_name)}}</a>
+				</h6>
+				<span class="pre-text">{{post.text}}</span>
+				<module-attachments data="post.attachments"></module-attachments>
+				<module-post-copy data="post.copy_history[0]" ng-show="post.copy_history.length"></module-post-copy>
+				<div class="post-info">
+					<p class="pull-left">
+						<span class="text-muted">{{post.date * 1000 | date:'medium'}}</span>
+					</p>
+					<p class="pull-right">
+						<a href="" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-comment"></span> {{post.comments.count}}</a>
+						<a href="" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-heart"></span> {{post.likes.count}}</p></a>
+				</div>
+				<module-comments data="post" class="pull-left"></module-comments>
+			</div>
+		</div>
+	</div>
+</div>

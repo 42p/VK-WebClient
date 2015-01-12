@@ -1,0 +1,69 @@
+<div class="col-xs-9">
+	<h4>{{group.name}}</h4>
+	<hr />
+	<small>{{group.status ? group.status : group.activity}}</small>
+	<div>
+		<div class="dl-horizontal group-info pre-text">
+		  <p>{{group.description}}</p>
+		  <p>{{group.place.title}}</p>
+		  <p>{{group.site}}</p>
+		</div>
+	</div>
+	<div class="panel panel-default">
+	  <div class="panel-heading">Photos</div>
+	  <div class="panel-body center">
+	    <div  class="group-photo-preview" ng-repeat="photo in photos">
+			<img ng-src="{{photo.photo_130}}"  />
+		</div>
+	  </div>
+	</div>
+	<module-wall data="wall">
+	
+	</module-wall>
+</div>
+<div class="col-xs-3 group-sidebar">
+	<img ng-src="{{group.photo_200}}" alt="..." class="btn-block">
+	<div class="list-group group-action-list">
+		<a href="#" class="list-group-item">Manage community</a>
+		<a href="" ng-click="box_open('invite_friend')" class="list-group-item">Ivite friends</a>
+		<a href="#" class="list-group-item">Advertise community</a>
+		<a href="#" class="list-group-item">Community statistics</a>
+		<a href="#" class="list-group-item">Add to bookmarks</a>
+	</div>
+	<button ng-show="group.is_member" class="btn btn-default btn-xs btn-block">Leave group</button>
+	<button ng-hide="group.is_member" class="btn btn-success btn-xs btn-block">Join group</button>
+	<div class="panel panel-default btn-block center">
+	  <div class="panel-heading ">{{members.count}} members</div>
+	  <div class="panel-body">
+	    <div ng-repeat="member in members.items" class="col-xs-4 group-member">
+			<a ng-href="#/profile/{{member.id}}"><img ng-src="{{member.photo_100}}" alt=""/></a>
+			<p><a ng-href="#/profile/{{member.id}}">{{member.first_name}}</a></p>
+		</div>
+	  </div>
+	</div>
+</div> 
+<script type="text/ng-template" id="invite_friend">
+    <div class="modal-header">
+        <h3 class="modal-title">Select friends from list</h3>
+    </div>
+    <div class="modal-body row">
+        <div class="col-xs-6" style="overflow: hidden;">
+			<div class="list-group group-invite-friends-list">
+				<a href="" ng-click="invite_add($index)" ng-hide="friend.selected" ng-repeat="friend in friends" class="list-group-item">
+					<img ng-src="{{friend.photo_50}}" alt="..."> {{friend.first_name + ' ' + friend.last_name}}
+				</a>
+			</div>
+		</div>
+		<div class="col-xs-6">
+			<div class="list-group group-invite-friends-list">
+				<a href="" ng-click="invite_remove($index)" ng-repeat="friend in selected" class="list-group-item">
+					<img ng-src="{{friend.photo_50}}" alt="..."> {{friend.first_name + ' ' + friend.last_name}}
+				</a>
+			</div>
+		</div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-sm btn-primary" ng-click="ok()">Invite ({{selected.length}})</button>
+        <button class="btn btn-sm btn-default" ng-click="cancel()">Cancel</button>
+    </div>
+</script>

@@ -1,0 +1,12 @@
+<div class="media" ng-init="author = data.author">
+	<a class="media-left pull-left" ng-href="#/{{author.name ? 'group' : 'profile'}}/{{author.id}}">
+	    <img ng-src="{{author.photo_50}}" alt="..." class="photo-30"/>
+	  </a>
+		<h6 class="media-heading">
+			<a href="">{{author.name ? author.name : (author.first_name +' ' + author.last_name)}}</a>
+		</h6>
+	<div class="pull-left">
+		<span class="pre-text">{{data.text}}</span>
+		<module-attachments data="data.attachments"></module-attachments>
+	</div>
+</div>

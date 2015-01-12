@@ -1,0 +1,37 @@
+<div>
+		<div class="panel panel-default">
+		  <div class="panel-body">
+				  <div class="row">
+					  <div class="col-xs-4">
+					   <input type="search" class="form-control" placeholder="Поиск сообщений и собеседников">
+					  </div>
+					  <div class="col-xs-4">
+						  
+					  </div>
+					  <div class="col-xs-1">
+						   <button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-star"></span> {{2}}</button>
+					  </div>
+					  <div class="col-xs-3">
+						  <button type="button" class="btn btn-primary btn-sm btn-block">ёписать сообщение</button>
+					  </div>
+					</div>
+		  </div>
+		</div>
+		<div class="dialogs-container" scrolly="false" scrolly-down="onDialogsScroll()" >
+			<h6>Диалогов: {{storage.dialogs_count}}</h6>
+			<table  class="table table-hover">
+				<tr ng-click="openDialog(item.message)" ng-repeat="item in storage.dialogs">
+					<td>
+						<img ng-src="{{item.message.photo_50 || storage.users[item.message.user_id].photo_50}}" alt="..." class="img-circle">
+					</td>
+					<td>
+						<span>{{getDialogTitle($index)}}</span>
+						<p class="text-info">{{item.message.date*1000 | date : 'MMM d, y h:mm:ss'}}</p>
+					</td>
+					<td>
+						<p>{{item.message.body}}</p>
+					</td>
+				</tr> 
+			</table>
+		</div>
+</div>

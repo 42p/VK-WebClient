@@ -1,0 +1,24 @@
+<div class="btn-group" >
+    <a href="#/groups/section/{{i}}" ng-repeat="(i, section) in sections" class="btn btn-primary btn-sm {{i == current_section ? 'active' : ''}}" >{{section.l}}</a>
+</div>
+<p>Section: <i>{{sections[current_section].l}}</i> | Count: {{count}}</p> 
+<div>
+    <ul class="media-list">
+      <li class="media" ng-repeat="group in groups">
+        <a class="media-left pull-left" href="#/group/{{group.id}}">
+          <img ng-src="{{group.photo_100}}" alt="...">
+        </a>
+        <div class="media-body">
+          <h5 class="media-heading">{{group.name}}</h5>
+          <p ng-show="group.deactivated"><b>{{group.deactivated}}</b></p>
+          <div ng-hide="group.deactivated">
+              <p>{{group.status}}</p>
+              <p>{{group.members_count}} members</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+</div>
+<div class="col-xs-3 col-xs-offset-3">
+    <button ng-show="groups.length < count" ng-click="get()" class="btn btn-sm btn-link btn-block">Load more +{{(count - groups.length) < 100 ? count - groups.length : 100}} ({{groups.length +' of ' + count}})</button>
+</div>

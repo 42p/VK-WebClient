@@ -1,0 +1,51 @@
+<div>
+<div class="dialog-container">
+		<div class="panel panel-default">
+		  <div class="panel-body">
+		    <a href="#/im/" class="btn btn-success btn-sm">Назад</a>
+		  </div>
+		</div>
+		<h6>Сообщений: {{messages_count}}</h6>
+		<div id="scrollDown" onload="onLoad()" class="dialog-window" scrolly="onDialogScroll()">
+			<div ng-repeat="item in history" class="media message-item {{item.out ? 'message-out' : 'message-in'}}">
+				<div ng-hide="!!item.action" class="media">
+				  <a class="{{item.out ? 'pull-right' : 'pull-left'}}" href="//vk.com/id{{item.from_id}}" target="_blank" >
+				    <img ng-src="{{users[item.from_id].photo_50}}" alt="..." class="img-circle">
+				  </a>
+				  <div class="{{!item.read_state ? 'unreaded' : ''}} media-body message-body" >
+				    <span class="media-heading text-primary">{{users[item.from_id].first_name + ' ' + users[item.from_id].last_name}}</span>
+				    <p class="message-text">
+						{{getMessageText($index)}}
+					</p>
+					<p>
+						<small>{{item.id}}</small>
+					</p>
+					<div ng-show="!!item.attach">
+								<a target="_blank" ng-repeat="a in item.attach.photo" href="{{a.photo.photo_2560 || a.photo.photo_1280 || a.photo.photo_807 || a.photo.photo_604}}"> <img  ng-src="{{a.photo.photo_130}}" alt="..." class="img-thumbnail">
+								<span ng-repeat="a in item.attach.doc" class="text-muted">Файл:  <a download href="{{a.doc.url}}" >{{a.doc.title}}</a></span>
+					</div>	
+				  </div>
+				</div>
+				<div ng-show="!!item.action" class="center">
+					  <span class="text-muted">{{getMessageAction($index)}}</span>
+			  	</div>
+			</div>
+		</div>
+		<hr/>
+		<div class="message-input center">
+			<div class="media">
+			  <a class="{{item.out ? 'pull-right' : 'pull-left'}}" href="#" target="">
+			   <img ng-src="{{USER.photo_50}}" alt="..." class="avatar img-circle">
+			  </a>
+			  <div class="col-xs-9 media-body message-input-field">
+			    <textarea class="field form-control" rows="4"></textarea>
+			  </div>
+			  <div class="dialog-control">
+				  <p><button class="btn btn-default btn-xs btn-block" role="button">Прикрепить</button></p>
+				  <p><button class="btn btn-primary btn-xs btn-block" role="button">Отправить</button></p>
+			  </div>
+			</div>
+		</div>
+		<hr/>
+	</div>
+<div>

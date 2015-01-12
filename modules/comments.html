@@ -1,0 +1,21 @@
+<div class="media" ng-init="author = comment.author" ng-repeat="comment in comments.items" class="wall-item">
+  <a class="media-left pull-left" ng-href="#/{{author.name ? 'group': 'profile'}}/{{author.id}}">
+    <img ng-src="{{author.photo_50}}" alt="..." />
+  </a>
+  <div class="media-body">
+    <h6 class="media-heading"><a ng-href="#/profile/{{author.id}}">{{author.name ? author.name : (author.first_name +' ' + author.last_name)}}</a></h6>
+	<small class="pre-text">{{comment.text}}</small>
+	<module-attachments data="comment.attachments"></module-attachments>
+	<div class="comment-info">
+		<p class="pull-left" >
+			<span class="text-muted">{{comment.date * 1000 | date:'medium'}}</span>
+		</p>
+		<p class="pull-right">
+			<a href="" class="glyphicon glyphicon-heart"></a> {{comment.likes.count}}
+		</p>
+	</div>
+  </div>
+</div>
+<div class="center comments-load-btn">
+	<a href="" ng-show="data.comments.count !=0 && data.comments.count != comments.items.length" ng-click="load_comments()">Load comments ({{ ( comments.items.length || 0) + ' from ' + (comments.count || data.comments.count) }})</a>
+</div>

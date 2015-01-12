@@ -1,0 +1,7 @@
+<div class="attachments">
+	<img class="img-thumbnail" ng-repeat="a in data | filter:attachments_filter('photo')" ng-src="{{a.photo.photo_130}}"/>
+	<div class="video-item" ng-repeat="a in data | filter:attachments_filter('video')" >
+		<img class="img-thumbnail" ng-src="{{a.video.photo_130}}"/>
+		<span href="" class="glyphicon glyphicon-play-circle btn-play"></span>
+	</div>
+</div>

@@ -1,0 +1,11 @@
+<p> Count: {{count}}</p> 
+<ul class="media-list">
+  <li class="media" ng-repeat="user in friends">
+    <a class="media-left pull-left" href="#/profile/{{user.id}}">
+      <img ng-src="{{user.photo_100}}" alt="...">
+    </a>
+    <div class="media-body">
+      <h5 class="media-heading">{{user.first_name + ' ' + user.last_name}}</h5>
+    </div>
+  </li>
+</ul>
