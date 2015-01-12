@@ -5,4 +5,4 @@ Authorization by Standalone (Or other) access token.
 # VK Веб приложение
 Веб приложение ВКонтакте основанное на VK API
 
-Авторизация по access token
+Авторизация с помощью access token
